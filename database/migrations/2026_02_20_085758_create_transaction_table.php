@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transaction', function (Blueprint $table) {
+        Schema::create('transactions', function (Blueprint $table) {
             $table->id();
 
             $table->foreignId('asset_id')
-                ->constrained('asset')
+                ->constrained('assets')
                 ->onDelete('cascade');
 
             $table->foreignId('approver_id')
-                ->constrained('approver')
+                ->constrained('approvers')
                 ->onDelete('cascade');
 
             $table->string('borrower_name');

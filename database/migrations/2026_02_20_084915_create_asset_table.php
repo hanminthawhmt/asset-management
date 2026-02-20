@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('asset', function (Blueprint $table) {
+        Schema::create('assets', function (Blueprint $table) {
             $table->id();
             $table->string('code')->unique();
             $table->string('name');
 
             $table->foreignId('asset_type_id')
-                ->constrained('asset_type')
+                ->constrained('asset_types')
                 ->onDelete('cascade');
 
             $table->string('brand')->nullable();
