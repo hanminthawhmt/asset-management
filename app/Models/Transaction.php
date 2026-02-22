@@ -10,7 +10,7 @@ class Transaction extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillables = [
+    protected $fillable = [
         'asset_id',
         'approver_id',
         'borrower_name',
@@ -22,11 +22,11 @@ class Transaction extends Model
         'property_left_image',
         'property_right_image',
         'property_overall_image',
-        'acs_front_image',
-        'acs_back_image',
-        'acs_left_image',
-        'acs_right_image',
-        'acs_overall_image',
+        'acc_front_image',
+        'acc_back_image',
+        'acc_left_image',
+        'acc_right_image',
+        'acc_overall_image',
         'approval_status',
     ];
 
