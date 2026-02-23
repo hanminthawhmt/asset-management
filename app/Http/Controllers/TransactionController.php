@@ -157,8 +157,8 @@ class TransactionController extends Controller
                 'defects'                => $transaction->asset->defects->pluck('name')->values(),
                 'borrower'               => $transaction->borrower_name,
                 'approver'               => [
-                    $transaction->approver->id,
-                    $transaction->approver->name,
+                    'id'   => $transaction->approver->id,
+                    'name' => $transaction->approver->name,
                 ],
                 'recorded_date'          => $transaction->recorded_date,
                 'borrow_date'            => $transaction->borrow_date,
