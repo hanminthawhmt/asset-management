@@ -22,9 +22,10 @@ Route::resource('accessories', AccessoryController::class);
 
 Route::resource('defects', DefectController::class);
 
-Route::resource('transactions', TransactionController::class);
+Route::patch('/transactions/approval-status', [TransactionController::class, 'updateApprovalStatus']);
 Route::patch('transactions/{transaction}/approve', [TransactionController::class, 'approve']);
 Route::patch('transactions/{transaction}/reject', [TransactionController::class, 'reject']);
+Route::resource('transactions', TransactionController::class);
 
 Route::resource('approvers', ApproverController::class);
 
