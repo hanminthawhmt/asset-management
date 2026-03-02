@@ -195,13 +195,14 @@ class TransactionController extends Controller
         // find the transaction first
         $transaction = Transaction::findOrFail($request->transaction_id);
 
+        // Discard this validation check temporarily
         // if the approval_status is not AWAITING
-        if ($transaction->approval_status !== 'AWAITING') {
-            return response()->json([
-                'status'  => false,
-                'message' => 'This transaction has already been processed.',
-            ], 400);
-        }
+        // if ($transaction->approval_status !== 'AWAITING') {
+        //     return response()->json([
+        //         'status'  => false,
+        //         'message' => 'This transaction has already been processed.',
+        //     ], 400);
+        // }
 
         // if the approver_id from request body is not the same with the approver_id from the transaction
         if ($transaction->approver_id !== $request->approver_id) {
