@@ -14,7 +14,10 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        $transactions          = Transaction::whereNull('deleted_at')->with(['asset', 'approver'])->get();
+        $transactions = Transaction::whereNull('deleted_at')
+            ->whereHas('asset')
+            ->with(['asset', 'approver'])
+            ->get();
         $formattedTransactions = $transactions->map(function ($transaction) {
             return [
                 'id'          => $transaction->id,
