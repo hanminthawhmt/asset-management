@@ -14,7 +14,10 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        $transactions          = Transaction::whereNull('deleted_at')->with(['asset', 'approver'])->get();
+        $transactions = Transaction::whereNull('deleted_at')
+            ->whereHas('asset')
+            ->with(['asset', 'approver'])
+            ->get();
         $formattedTransactions = $transactions->map(function ($transaction) {
             return [
                 'id'          => $transaction->id,
@@ -157,8 +160,8 @@ class TransactionController extends Controller
                 'defects'                => $transaction->asset->defects->pluck('name')->values(),
                 'borrower'               => $transaction->borrower_name,
                 'approver'               => [
-                    $transaction->approver->id,
-                    $transaction->approver->name,
+                    'id'   => $transaction->approver->id,
+                    'name' => $transaction->approver->name,
                 ],
                 'recorded_date'          => $transaction->recorded_date,
                 'borrow_date'            => $transaction->borrow_date,

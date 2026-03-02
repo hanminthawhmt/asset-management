@@ -124,8 +124,8 @@ class AssetController extends Controller
                 'code'        => $asset->code,
                 'name'        => $asset->name,
                 'asset_type'  => [
-                    $asset->assetType->id,
-                    $asset->assetType->name,
+                    'id'   => $asset->assetType->id,
+                    'name' => $asset->assetType->name,
                 ],
                 'brand'       => $asset->brand,
                 'model'       => $asset->model,
